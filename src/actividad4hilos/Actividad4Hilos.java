@@ -35,7 +35,7 @@ public class Actividad4Hilos {
             worker.start();
             threadsList.add(worker);
         }
-        
+        System.out.println("Threads created, now waiting fot them to finish...");
         int threadsRunning = 0;
         do {
             threadsRunning = 0;
@@ -45,9 +45,11 @@ public class Actividad4Hilos {
                 }
             }
         } while (threadsRunning > 0);
-        
+        System.out.println("All Threads finished...");
         int finalSum = 0;
+        System.out.println("Sums calculated by threads:");
         for(Integer threadSetSum: Data.SumsList){
+            System.out.println("- " + threadSetSum);
             finalSum += threadSetSum;
         }
         
@@ -57,12 +59,13 @@ public class Actividad4Hilos {
     public static void fillListWithRandoms(int size){
         Random r = new Random();
         for (int i = 0; i < size; i++) {
-            Data.listaNumeros.add(r.nextInt(1000));
+            Data.listaNumeros.add(r.nextInt(100));
         }
     }
     
     public static int getNumberOfThreads(){
-        return Data.listaNumeros.size() / splitEvery;
+        double numberT =  (double)Data.listaNumeros.size() / (double)splitEvery;
+        return (int)Math.ceil(numberT);
     }
     
 }

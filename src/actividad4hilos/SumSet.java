@@ -21,11 +21,10 @@ public class SumSet implements Runnable{
     @Override
     public void run() {
         int sum = 0;
-        for (int i = startIndex; i < startIndex + segmentSize - 1; i++) {
+        for (int i = startIndex; i < startIndex + segmentSize - 1 && i < Data.listaNumeros.size(); i++) {
             sum += Data.listaNumeros.get(i);
         }
         Data.SumsList.add(sum);
-        System.out.println(sum);
     }
     
 }
